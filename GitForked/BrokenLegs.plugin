@@ -5,6 +5,7 @@
         <Author>Git-Forked</Author>
         <Version>1.0.0</Version>
         <Description>Broken legs counter</Description>
+        <Image>Gitforked/BrokenLegs/Resources/BrokenLeg.tga</Image>
     </Information>
     <Package>GitForked.BrokenLegs.Main</Package>
 </Plugin>

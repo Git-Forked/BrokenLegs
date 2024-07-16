@@ -45,3 +45,4 @@ Under 'About', change 'Automatically Load For' to 'All Characters'.
 Available from:
 
 https://github.com/Git-Forked/BrokenLegs        <--(LATEST UPDATES)
+https://www.lotrointerface.com/downloads/info1240-BrokenLegs.html
