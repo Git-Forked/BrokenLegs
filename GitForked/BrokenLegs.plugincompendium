@@ -2,7 +2,7 @@
 <PluginConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Id>1240</Id>
   <Name>BrokenLegs</Name>
-  <Version>1.0.1</Version>
+  <Version>1.1.1</Version>
   <Author>Git-Forked</Author>
   <InfoUrl>https://www.lotrointerface.com/downloads/info1240</InfoUrl>
   <DownloadUrl>http://www.lotrointerface.com/downloads/download1240</DownloadUrl>

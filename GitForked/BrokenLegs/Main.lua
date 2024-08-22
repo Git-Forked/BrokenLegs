@@ -13,7 +13,7 @@ function CheckBrokenLegs()
         if (EffectList:Get(i):GetName()) == "Falling Injuries"
         then
             broken_legs = broken_legs + 1
-            Turbine.Shell.WriteLine("Broken legs this session: " .. broken_legs)
+            Turbine.Shell.WriteLine("Broken legs this session: " .. broken_legs);
             break
         end
     end
@@ -24,9 +24,9 @@ function CheckBrokenLegsVerbose()
         --if (EffectList:Contains("Falling Injuries") == true)  -- This line did NOT work, even though the LOTRO API lists it as valid. Using a custom work-around below.
         if (EffectList:Get(i):GetName()) == "Falling Injuries"
         then
-            Turbine.Shell.WriteLine("Falling Injuries effect is active, you broke a leg.")
+            Turbine.Shell.WriteLine("Falling Injuries effect is active, you broke a leg.");
         else
-            Turbine.Shell.WriteLine(EffectList:Get(i):GetName() .. " is not Falling Injuries.")
+            Turbine.Shell.WriteLine(EffectList:Get(i):GetName() .. " is not Falling Injuries.");
         end
     end
 end
@@ -37,7 +37,7 @@ function ListAllEffects()
     end
 end
 
---Callback Handler - Pengoros Method
+-- Callback Handler - Pengoros Method
 function AddCallback(object, event, callback)
     if (object[event] == nil) then
         object[event] = callback;
@@ -55,15 +55,22 @@ end
 BrokenLegsCommand = Turbine.ShellCommand();
 
 function BrokenLegsCommand:Execute(command, arguments)
-    if (arguments == "1") then
+    if (arguments == "?") then
+        Turbine.Shell.WriteLine("BrokenLegs  Command list: ");
+        Turbine.Shell.WriteLine("check : Check for broken legs.");
+        Turbine.Shell.WriteLine("verbose : Check for broken legs verbosely.");
+        Turbine.Shell.WriteLine("list : List all effects");
+        CheckBrokenLegs();
+    end
+    if (arguments == "check") then
         --Turbine.Shell.WriteLine("BrokenLegs: Check For Broken Legs.");
         CheckBrokenLegs();
     end
-    if (arguments == "2") then
+    if (arguments == "verbose") then
         Turbine.Shell.WriteLine("BrokenLegs: Check For Broken Legs (verbose).");
         CheckBrokenLegsVerbose();
     end
-    if (arguments == "3") then
+    if (arguments == "list") then
         Turbine.Shell.WriteLine("BrokenLegs: List All Effects.");
         ListAllEffects();
     end
