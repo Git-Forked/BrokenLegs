@@ -92,5 +92,9 @@ AddCallback(EffectList, "EffectAdded", CheckBrokenLegs);
 -- Load Data
 broken_legs_total = Turbine.PluginData.Load(Turbine.DataScope.Character, "BrokenLegs");
 
+if (broken_legs_total == nil) then
+    broken_legs_total = 0
+end
+
 -- Plugin Loaded Message
 Turbine.Shell.WriteLine("<rgb=#008080>BrokenLegs</rgb> " .. Plugins.BrokenLegs:GetVersion() .. " by <rgb=#008080>Git-Forked</rgb> loaded.");
