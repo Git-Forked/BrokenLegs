@@ -42,6 +42,19 @@ Find 'BrokenLegs' in the list and left click it.
 Under 'About', change 'Automatically Load For' to 'All Characters'.
 
 
+Commands:
+(/BL can be replaced with /BrokenLegs in case of conflict with other plugins [like BirdingLog])
+
+/BL stats
+Show BrokenLegs Statistics:
+Broken legs this session
+Broken legs total
+
+/BL ?
+Display the BrokenLegs Help Menu.
+Including debugging commands not needed by typical users.
+
+
 Available from:
 
 https://github.com/Git-Forked/BrokenLegs        <--(LATEST UPDATES)

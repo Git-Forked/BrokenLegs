@@ -7,12 +7,15 @@ import "Turbine.Gameplay";
 EffectList = Turbine.Gameplay.LocalPlayer:GetInstance():GetEffects();
 
 local broken_legs = 0
+local broken_legs_total = 0
 
 function CheckBrokenLegs()
     for i = 1, EffectList:GetCount(), 1 do
         if (EffectList:Get(i):GetName()) == "Falling Injuries"
         then
             broken_legs = broken_legs + 1
+            broken_legs_total = broken_legs_total + 1
+            Turbine.PluginData.Save(Turbine.DataScope.Character, "BrokenLegs", broken_legs_total);
             Turbine.Shell.WriteLine("Broken legs this session: " .. broken_legs);
             break
         end
@@ -57,10 +60,15 @@ BrokenLegsCommand = Turbine.ShellCommand();
 function BrokenLegsCommand:Execute(command, arguments)
     if (arguments == "?") then
         Turbine.Shell.WriteLine("BrokenLegs  Command list: ");
-        Turbine.Shell.WriteLine("check : Check for broken legs.");
-        Turbine.Shell.WriteLine("verbose : Check for broken legs verbosely.");
-        Turbine.Shell.WriteLine("list : List all effects");
-        CheckBrokenLegs();
+        Turbine.Shell.WriteLine("stats : Show BrokeLegs Statistics.");
+        Turbine.Shell.WriteLine("check : Check for broken legs. (for debugging usage)");
+        Turbine.Shell.WriteLine("verbose : Check for broken legs verbosely. (for debugging usage)");
+        Turbine.Shell.WriteLine("list : List all effects (for debugging usage)");
+    end
+    if (arguments == "stats") then
+        Turbine.Shell.WriteLine("BrokenLegs Statistics: ");
+        Turbine.Shell.WriteLine("Broken legs this session: " .. broken_legs);
+        Turbine.Shell.WriteLine("Broken legs total: " .. broken_legs_total);
     end
     if (arguments == "check") then
         --Turbine.Shell.WriteLine("BrokenLegs: Check For Broken Legs.");
@@ -80,6 +88,9 @@ Turbine.Shell.AddCommand("BrokenLegs;brokenlegs;BL;bl", BrokenLegsCommand);
 
 -- Effect Callback
 AddCallback(EffectList, "EffectAdded", CheckBrokenLegs);
+
+-- Load Data
+broken_legs_total = Turbine.PluginData.Load(Turbine.DataScope.Character, "BrokenLegs");
 
 -- Plugin Loaded Message
 Turbine.Shell.WriteLine("<rgb=#008080>BrokenLegs</rgb> " .. Plugins.BrokenLegs:GetVersion() .. " by <rgb=#008080>Git-Forked</rgb> loaded.");
